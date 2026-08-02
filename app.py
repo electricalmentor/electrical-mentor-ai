@@ -1,5 +1,5 @@
 import streamlit as st
-
+from scenarios.motors import motor_wont_start
 st.title("⚡ Electrical Mentor AI Simulator")
 
 # Create score
@@ -11,16 +11,13 @@ if "question" not in st.session_state:
 
 
 st.subheader("Scenario #001")
-st.write("480V Conveyor Motor Will Not Start")
+st.write(motor_wont_start["title"])
 
-st.write("""
+st.write(f"""
 Equipment:
-- 480V three-phase motor
-- Across-the-line starter
-- MCC bucket
-- 120V control circuit
+{motor_wont_start["equipment"]}
 """)
-st.info("Always follor Lockout/Tagout procedures before troubleshooting.")
+st.info("Always follow Lockout/Tagout procedures before troubleshooting.")
 
 st.divider()
 
