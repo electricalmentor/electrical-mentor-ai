@@ -20,6 +20,7 @@ Equipment:
 - MCC bucket
 - 120V control circuit
 """)
+st.info("Always follor Lockout/Tagout procedures before troubleshooting.")
 
 st.divider()
 
