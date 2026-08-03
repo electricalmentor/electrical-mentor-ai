@@ -1,6 +1,23 @@
 import streamlit as st
 from scenarios.motors import motor_wont_start
+st.sidebar.title("⚡ Training Center")
+
+category = st.sidebar.selectbox(
+    "Choose Category",
+    [
+        "Motors"
+    ]
+)
 st.title("⚡ Electrical Mentor AI Simulator")
+st.sidebar.divider()
+
+st.sidebar.write("👷 Apprentice Profile")
+
+st.sidebar.write("Level: Electrical Apprentice I")
+
+st.sidebar.write(
+    f"XP: {st.session_state.score}"
+)
 
 # Create score
 if "score" not in st.session_state:
