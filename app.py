@@ -1,5 +1,5 @@
 import streamlit as st
-from scenarios.motors import motor_wont_start
+from scenarios.motors import motor_scenarios
 st.sidebar.title("⚡ Training Center")
 
 category = st.sidebar.selectbox(
@@ -8,6 +8,11 @@ category = st.sidebar.selectbox(
         "Motors"
     ]
 )
+scenario_choice = st.sidebar.selectbox(
+    "Choose Job",
+    list(motor_scenarios.keys())
+)
+selected_scenario = motor_scenarios[scenario_choice]
 st.title("⚡ Electrical Mentor AI Simulator")
 st.sidebar.divider()
 
@@ -28,11 +33,11 @@ if "question" not in st.session_state:
 
 
 st.subheader("Scenario #001")
-st.write(motor_wont_start["title"])
+st.write(selected_scenario["title"])
 
 st.write(f"""
 Equipment:
-{motor_wont_start["equipment"]}
+{selected_scenario["equipment"]}
 """)
 st.info("Always follow Lockout/Tagout procedures before troubleshooting.")
 
@@ -42,10 +47,7 @@ st.divider()
 if st.session_state.question == 1:
 
     st.write("""
-    Operator reports:
-
-    "The conveyor motor will not start."
-    """)
+    st.write(selected_scenario["symptom"])
 
     answer = st.radio(
         "What should you do first?",
