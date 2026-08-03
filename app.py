@@ -22,7 +22,7 @@ selected_scenario = motor_scenarios[scenario_choice]
 st.title("⚡ Electrical Mentor AI Simulator")
 st.sidebar.divider()
 
-
+st.sidebar.write("👷 Apprentice Profile")
 
 st.sidebar.write("Level: Electrical Apprentice I")
 
