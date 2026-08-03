@@ -49,12 +49,11 @@ st.info("Always follow Lockout/Tagout procedures before troubleshooting.")
 
 st.divider()
 
-
 if st.session_state.question == 1:
 
-   st.write(selected_scenario["symptom"])
+    st.write(selected_scenario["symptom"])
 
-answer = st.radio(
+    answer = st.radio(
     "What should you do first?",
         [
             "Replace the motor",
