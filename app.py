@@ -1,5 +1,11 @@
 import streamlit as st
 from scenarios.motors import motor_scenarios
+
+if "score" not in st.session_state:
+    st.session_state.score = 100
+
+if "question" not in st.session_state:
+    st.session_state.question = 1
 st.sidebar.title("⚡ Training Center")
 
 category = st.sidebar.selectbox(
@@ -37,7 +43,7 @@ st.write(selected_scenario["title"])
 
 st.write(f"""
 Equipment:
-{selected_scenario["equipment"]}
+{selected_scenario['equipment']}
 """)
 st.info("Always follow Lockout/Tagout procedures before troubleshooting.")
 
@@ -46,11 +52,10 @@ st.divider()
 
 if st.session_state.question == 1:
 
-    st.write("""
-    st.write(selected_scenario["symptom"])
+   st.write(selected_scenario["symptom"])
 
-    answer = st.radio(
-        "What should you do first?",
+answer = st.radio(
+    "What should you do first?",
         [
             "Replace the motor",
             "Ask questions about the failure",
