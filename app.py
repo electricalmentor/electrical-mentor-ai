@@ -7,8 +7,8 @@ if "score" not in st.session_state:
 if "question" not in st.session_state:
     st.session_state.question = 1
     
-    if "feedback" not in st.session_state:
-    st.session_state.feedback = None
+if "feedback" not in st.session_state:
+        st.session_state.feedback = None
 st.sidebar.title("⚡ Training Center")
 
 category = st.sidebar.selectbox(
