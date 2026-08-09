@@ -73,8 +73,6 @@ if st.session_state.question <= len(selected_scenario["questions"]):
 
         st.session_state.question += 1
 
-        st.session_state.question = 4
-
 
 if st.session_state.question > len(selected_scenario["questions"]):
 
