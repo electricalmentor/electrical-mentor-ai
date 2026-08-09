@@ -49,103 +49,29 @@ st.info("Always follow Lockout/Tagout procedures before troubleshooting.")
 
 st.divider()
 
-if st.session_state.question == 1:
+if st.session_state.question <= len(selected_scenario["questions"]):
+
+    current_question = selected_scenario["questions"][
+        st.session_state.question - 1
+    ]
 
     st.write(selected_scenario["symptom"])
 
     answer = st.radio(
-    "What should you do first?",
-        [
-            "Replace the motor",
-            "Ask questions about the failure",
-            "Megger the motor",
-            "Replace the contactor"
-        ]
+        current_question["question"],
+        current_question["answers"]
     )
-
 
     if st.button("Submit Answer"):
 
-        if answer == "Ask questions about the failure":
-            st.success("Correct! Good electricians gather information first.")
-            st.session_state.score += 5
+        if answer == current_question["correct"]:
+            st.success("Correct! Good troubleshooting.")
+            st.session_state.score += current_question["points"]
         else:
-            st.error("Incorrect. Do not replace parts before troubleshooting.")
+            st.error("Incorrect. Review your troubleshooting process.")
             st.session_state.score -= 10
 
-        st.session_state.question = 2
-
-
-if st.session_state.question == 2:
-
-    st.write("""
-    You arrive at the MCC.
-
-    The breaker is ON.
-
-    What should you check next?
-    """)
-
-    answer = st.radio(
-        "Choose your next step:",
-        [
-            "Check incoming voltage",
-            "Replace the motor",
-            "Check the bearings",
-            "Order a new VFD"
-        ]
-    )
-
-
-    if st.button("Submit Second Answer"):
-
-        if answer == "Check incoming voltage":
-            st.success("Correct! Verify power before moving deeper into the circuit.")
-            st.session_state.score += 5
-        else:
-            st.error("Not the best troubleshooting step.")
-            st.session_state.score -= 10
-
-        st.session_state.question = 3
-
-
-if st.session_state.question == 3:
-
-    st.write("""
-    Measurements:
-
-    Control transformer:
-    120 VAC
-
-    Start button:
-    Good
-
-    Contactor coil:
-    0 VAC
-
-    What is the likely problem?
-    """)
-
-    answer = st.radio(
-        "Diagnosis:",
-        [
-            "Failed motor",
-            "Open control circuit",
-            "Bad bearings",
-            "Wrong overload setting"
-        ]
-    )
-
-
-    if st.button("Finish Scenario"):
-
-        if answer == "Open control circuit":
-            st.success("Excellent troubleshooting!")
-            st.session_state.score += 10
-        else:
-            st.error("Review control circuit troubleshooting.")
-            st.session_state.score -= 10
-
+        st.session_state.question += 1
 
         st.session_state.question = 4
 
