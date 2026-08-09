@@ -116,9 +116,6 @@ motor_scenarios = {
 
 },
 
-    },
-
-
     "Motor Runs Backwards": {
 
         "title": "Three Phase Motor Running Backwards",
