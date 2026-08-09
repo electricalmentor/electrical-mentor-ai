@@ -59,7 +59,8 @@ if st.session_state.question <= len(selected_scenario["questions"]):
 
     answer = st.radio(
         current_question["question"],
-        current_question["answers"]
+        current_question["answers"],
+        key=f"question_{st.session_state.question}"
     )
 
     if st.button("Submit Answer"):
@@ -72,6 +73,7 @@ if st.session_state.question <= len(selected_scenario["questions"]):
             st.session_state.score -= 10
 
         st.session_state.question += 1
+        st.rerun()
 
 
 if st.session_state.question > len(selected_scenario["questions"]):
