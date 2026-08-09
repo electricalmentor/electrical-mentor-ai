@@ -6,6 +6,9 @@ if "score" not in st.session_state:
 
 if "question" not in st.session_state:
     st.session_state.question = 1
+    
+    if "feedback" not in st.session_state:
+    st.session_state.feedback = None
 st.sidebar.title("⚡ Training Center")
 
 category = st.sidebar.selectbox(
@@ -49,6 +52,16 @@ st.info("Always follow Lockout/Tagout procedures before troubleshooting.")
 
 st.divider()
 
+if st.session_state.feedback:
+
+    feedback_type, feedback_message = st.session_state.feedback
+
+    if feedback_type == "correct":
+        st.success(feedback_message)
+    else:
+        st.error(feedback_message)
+
+    st.session_state.feedback = None
 if st.session_state.question <= len(selected_scenario["questions"]):
 
     current_question = selected_scenario["questions"][
@@ -66,10 +79,18 @@ if st.session_state.question <= len(selected_scenario["questions"]):
     if st.button("Submit Answer"):
 
         if answer == current_question["correct"]:
-            st.success("Correct! Good troubleshooting.")
+            st.session_state.feedback = (
+                "correct",
+                f"Correct! Good troubleshooting. +{current_question['points']} XP"
+            )
             st.session_state.score += current_question["points"]
+
         else:
-            st.error("Incorrect. Review your troubleshooting process.")
+            st.session_state.feedback = (
+                "incorrect",
+                f"Incorrect. The best answer was: "
+                f"{current_question['correct']}"
+            )
             st.session_state.score -= 10
 
         st.session_state.question += 1
