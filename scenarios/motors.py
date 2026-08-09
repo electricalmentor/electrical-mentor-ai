@@ -172,24 +172,61 @@ motor_scenarios = {
 
 },
 
-    "Motor Overheats": {
+   "Motor Overheats": {
 
-        "title": "Motor Overheating",
+    "title": "Motor Overheating",
 
-        "equipment": """
-        480V Three Phase Motor
-        Overload Relay
-        Mechanical Load
-        """,
+    "equipment": """
+    480V Three Phase Motor
+    Overload Relay
+    Mechanical Load
+    """,
 
-        "symptom": """
-        Operator reports:
+    "symptom": """
+    Operator reports:
 
-        Motor temperature is higher than normal.
-        """,
+    Motor temperature is higher than normal.
+    """,
 
-        "difficulty": "Apprentice Level II",
+    "difficulty": "Apprentice Level II",
 
+    "questions": [
+        {
+            "question": "What should you check first when a motor is overheating?",
+            "answers": [
+                "Check the motor load",
+                "Replace the motor",
+                "Increase the overload setting",
+                "Replace the breaker"
+            ],
+            "correct": "Check the motor load",
+            "points": 5
+        },
+        {
+            "question": "What electrical condition can cause a three-phase motor to overheat?",
+            "answers": [
+                "Voltage imbalance",
+                "Correct phase sequence",
+                "Proper grounding",
+                "Normal current"
+            ],
+            "correct": "Voltage imbalance",
+            "points": 5
+        },
+        {
+            "question": "The motor is drawing more current than its nameplate rating. What should you investigate?",
+            "answers": [
+                "Mechanical overload",
+                "Paint color",
+                "Control transformer size",
+                "Conduit size only"
+            ],
+            "correct": "Mechanical overload",
+            "points": 10
+        }
+    ],
+
+}
     }
 
 }# Motor Troubleshooting Scenarios
