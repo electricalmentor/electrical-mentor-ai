@@ -132,10 +132,45 @@ motor_scenarios = {
         Motor rotation is incorrect.
         """,
 
-        "difficulty": "Apprentice Level I",
+            "difficulty": "Apprentice Level I",
 
-    },
+    "questions": [
+        {
+            "question": "The motor is rotating in the wrong direction. What should you do first?",
+            "answers": [
+                "Replace the motor",
+                "Verify the motor is safe to work on",
+                "Increase the breaker size",
+                "Replace the overload relay"
+            ],
+            "correct": "Verify the motor is safe to work on",
+            "points": 5
+        },
+        {
+            "question": "What is the usual way to reverse the rotation of a three-phase motor?",
+            "answers": [
+                "Swap any two phase conductors",
+                "Swap the neutral and ground",
+                "Increase the control voltage",
+                "Replace the motor starter"
+            ],
+            "correct": "Swap any two phase conductors",
+            "points": 10
+        },
+        {
+            "question": "After correcting the phase sequence, what should you do?",
+            "answers": [
+                "Immediately leave the motor running",
+                "Verify rotation and operation",
+                "Increase the overload setting",
+                "Replace the motor"
+            ],
+            "correct": "Verify rotation and operation",
+            "points": 5
+        }
+    ],
 
+},
 
     "Motor Overheats": {
 
