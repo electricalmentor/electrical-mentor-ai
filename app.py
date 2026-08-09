@@ -76,7 +76,7 @@ if st.session_state.question <= len(selected_scenario["questions"]):
         st.session_state.question = 4
 
 
-if st.session_state.question == 4:
+if st.session_state.question > len(selected_scenario["questions"]):
 
     st.header("Scenario Complete")
 
@@ -87,4 +87,10 @@ if st.session_state.question == 4:
     if st.session_state.score >= 100:
         st.success("Electrical Apprentice Level Up!")
     else:
-        st.info("Keep practicing. Every electrician builds troubleshooting skills through repetition.")
+        st.info(
+            "Keep practicing. Every electrician builds troubleshooting skills through repetition."
+        )
+
+    if st.button("Try Another Scenario"):
+        st.session_state.question = 1
+        st.rerun()
